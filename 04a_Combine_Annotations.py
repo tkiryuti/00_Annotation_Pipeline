@@ -157,9 +157,12 @@ def compare_annotations(trembl, sprot, kofamscan, outfile):
     # Build dictionary with gene names as keys and values as a list of
     # the annotation line from each database method
     d = defaultdict(list)
-    d = gather_data(trembl, 'TrEMBL', d)
-    d = gather_data(sprot, 'SwissProt', d)
-    d = gather_data(kofamscan, 'KofamScan', d)
+    if trembl is not None:
+    	d = gather_data(trembl, 'TrEMBL', d)
+    if sprot is not None:
+    	d = gather_data(sprot, 'SwissProt', d)
+    if kofamscan is not None:
+    	d = gather_data(kofamscan, 'KofamScan', d)
 
     # Read through the dictionary, write out a new combined annotation
     # file, compute the comparisons, and output comparisions results
