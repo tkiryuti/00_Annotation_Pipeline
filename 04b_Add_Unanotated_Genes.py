@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-'''Add UnAnnotated Genes to UniProt_Annotated.tsv files
+'''Add UnAnnotated Genes to combined annotations (.tsv) files
 
-Not all genes find a match to the UniProt DBs but its good to keep
-track of them. This script adds no matches to the UniProt annotations.
+Not all genes find a match to the TrEMBL, UniProt, and KEGG databases but it is 
+good to keep track of them. This script adds genes that found no match to any 
+of the databases.
 
 -------------------------------------------
 Author :: Roth Conrad
@@ -66,8 +67,8 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter
         )
     parser.add_argument(
-        '-a', '--uniprot_annotated_tsv',
-        help='Please specify the UniProt_Annotated.tsv file!',
+        '-a', '--combined_annotations',
+        help='Please specify the combined annotations (.tsv) file!',
         required=True,
         metavar='',
         type=str,
@@ -91,7 +92,7 @@ def main():
     # Run this scripts main function
     print('Running Script...')
     Add_NoMatch_to_UniProt_Annotations(
-                            args['uniprot_annotated_tsv'],
+                            args['combined_annotations'],
                             args['representative_protein_fasta'],
                             args['out_file']
                             )
